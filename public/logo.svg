@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Z shape background -->
+  <rect x="18" y="10" width="84" height="100" rx="14" fill="#014E73"/>
+  <!-- Z strokes -->
+  <path d="M30 28 L90 28 L36 72 L90 92" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Circuit dots -->
+  <circle cx="30" cy="28" r="4" fill="#80C9E8"/>
+  <circle cx="90" cy="28" r="4" fill="#80C9E8"/>
+  <circle cx="63" cy="50" r="4" fill="#80C9E8"/>
+  <circle cx="36" cy="72" r="4" fill="#80C9E8"/>
+  <circle cx="90" cy="92" r="4" fill="#80C9E8"/>
+  <!-- Arrow at top-right -->
+  <path d="M82 20 L96 20 L96 34" stroke="#B3D9EE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
