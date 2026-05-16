@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
@@ -23,7 +23,7 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; bg: string; 
   cancelled:  { label: "Cancelled",  color: "#991B1B", bg: "#FEE2E2", step: 0 },
 };
 
-export default function TrackOrderPage() {
+function TrackOrderContent() {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("orderId") ?? "");
   const [order, setOrder] = useState<TrackedOrder | null>(null);
@@ -280,5 +280,13 @@ export default function TrackOrderPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function TrackOrderPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: "60px 0", textAlign: "center", color: "var(--text-light)" }}>Loading…</div>}>
+      <TrackOrderContent />
+    </Suspense>
   );
 }
