@@ -51,17 +51,24 @@ export default function ProductDetail({ product, related }: Props) {
     <div style={{ padding: "48px 0 96px" }}>
       <div className="container">
         {/* Breadcrumb */}
-        <nav style={{ marginBottom: 32, display: "flex", gap: 8, fontSize: 13, color: "var(--text-light)" }}>
-          <Link href="/" style={{ color: "var(--text-light)", textDecoration: "none" }}>Home</Link>
-          <span>/</span>
-          <Link href="/products" style={{ color: "var(--text-light)", textDecoration: "none" }}>Products</Link>
-          <span>/</span>
-          <Link href={`/products?category=${product.category}`} style={{ color: "var(--text-light)", textDecoration: "none", textTransform: "capitalize" }}>{product.category}</Link>
-          <span>/</span>
-          <span style={{ color: "var(--text)" }}>{product.name}</span>
+        <nav style={{ marginBottom: 32, fontSize: 13, color: "var(--text-light)" }}>
+          <div className="desktop-only" style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+            <Link href="/" style={{ color: "var(--text-light)", textDecoration: "none" }}>Home</Link>
+            <span>/</span>
+            <Link href="/products" style={{ color: "var(--text-light)", textDecoration: "none" }}>Products</Link>
+            <span>/</span>
+            <Link href={`/products?category=${product.category}`} style={{ color: "var(--text-light)", textDecoration: "none", textTransform: "capitalize" }}>{product.category}</Link>
+            <span>/</span>
+            <span style={{ color: "var(--text)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: 200 }}>{product.name}</span>
+          </div>
+          <div className="mobile-only">
+            <Link href="/products" style={{ color: "var(--text-light)", textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>
+              <span>←</span> Products
+            </Link>
+          </div>
         </nav>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, marginBottom: 80 }}>
+        <div className="product-detail-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, marginBottom: 80 }}>
           {/* Images */}
           <div>
             <div
@@ -262,7 +269,12 @@ export default function ProductDetail({ product, related }: Props) {
 
       <style>{`
         @media (max-width: 768px) {
-          .container > div:nth-child(2) { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .product-detail-grid { grid-template-columns: 1fr !important; gap: 28px !important; margin-bottom: 48px !important; }
+          .desktop-only { display: none !important; }
+          .mobile-only  { display: block !important; }
+        }
+        @media (min-width: 769px) {
+          .mobile-only  { display: none !important; }
         }
       `}</style>
     </div>

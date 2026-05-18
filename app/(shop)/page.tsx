@@ -25,10 +25,11 @@ export default async function HomePage() {
     <>
       {/* Hero */}
       <section
+        className="hero-section"
         style={{
           background: "linear-gradient(135deg, var(--primary-darker) 0%, var(--primary) 60%, var(--primary-light) 100%)",
           color: "#fff",
-          padding: "80px 24px 100px",
+          padding: "80px 0 100px",
           position: "relative",
           overflow: "hidden",
         }}
@@ -43,7 +44,8 @@ export default async function HomePage() {
           }}
         />
 
-        <div className="container" style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+        <div className="container" style={{ position: "relative" }}>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
           <div className="animate-fade-up">
             <p className="section-label" style={{ color: "var(--accent-mid)", marginBottom: 16 }}>
               Microchips · Robotics · Gadgets
@@ -65,7 +67,7 @@ export default async function HomePage() {
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: 36, maxWidth: 440 }}>
               Premium components for makers, engineers, and innovators. From microcontrollers to robotic actuators — everything you need to bring your ideas to life.
             </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <div className="hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <Link href="/products" className="btn-primary" style={{ background: "#fff", color: "var(--primary)", padding: "14px 32px", fontSize: 15 }}>
                 Shop Now
               </Link>
@@ -76,7 +78,7 @@ export default async function HomePage() {
           </div>
 
           {/* Hero visual */}
-          <div className="animate-fade-up delay-200" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <div className="hero-visual animate-fade-up delay-200" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             {/* Outer glow ring */}
             <div style={{
               width: 340,
@@ -107,10 +109,11 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
+        </div>{/* /hero-grid */}
 
         {/* Stats */}
-        <div className="container" style={{ position: "relative", marginTop: 60 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, maxWidth: 560 }}>
+        <div className="container hero-stats" style={{ position: "relative", marginTop: 60 }}>
+          <div className="hero-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, maxWidth: 560 }}>
             {[
               { value: "500+", label: "Products" },
               { value: "10K+", label: "Happy Makers" },
@@ -122,7 +125,7 @@ export default async function HomePage() {
               </div>
             ))}
           </div>
-        </div>
+        </div>{/* /hero-stats */}
       </section>
 
       {/* Categories */}
@@ -211,10 +214,6 @@ export default async function HomePage() {
 
       <style>{`
         .category-pill:hover { background: var(--primary) !important; color: #fff !important; border-color: var(--primary) !important; }
-        @media (max-width: 768px) {
-          .container > div:first-child { grid-template-columns: 1fr !important; }
-          .container > div:first-child > div:last-child { display: none !important; }
-        }
       `}</style>
     </>
   );

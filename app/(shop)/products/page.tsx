@@ -46,9 +46,26 @@ export default async function ProductsPage({ searchParams }: Props) {
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40, alignItems: "start" }}>
+        {/* Mobile category filter strip */}
+        <div className="mobile-cats">
+          <div className="mobile-cats-inner">
+            <Link href="/products" className={`mobile-cat-chip${!category ? " active" : ""}`}>All</Link>
+            {categories.map((cat) => (
+              <Link
+                key={cat}
+                href={`/products?category=${encodeURIComponent(cat)}`}
+                className={`mobile-cat-chip${category === cat ? " active" : ""}`}
+                style={{ textTransform: "capitalize" }}
+              >
+                {cat}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="products-layout" style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40, alignItems: "start" }}>
           {/* Sidebar filters */}
-          <aside>
+          <aside className="products-sidebar">
             <div className="card" style={{ padding: 24 }}>
               <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--text-light)", marginBottom: 16 }}>
                 Categories
@@ -122,8 +139,8 @@ export default async function ProductsPage({ searchParams }: Props) {
 
       <style>{`
         @media (max-width: 768px) {
-          .container > div { grid-template-columns: 1fr !important; }
-          aside { display: none; }
+          .products-layout { grid-template-columns: 1fr !important; }
+          .products-sidebar { display: none !important; }
         }
       `}</style>
     </div>

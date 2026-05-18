@@ -152,7 +152,7 @@ export default function CheckoutPage() {
           <h1 className="section-title">Checkout</h1>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 40, alignItems: "start" }}>
+        <div className="checkout-layout" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 40, alignItems: "start" }}>
           {/* Form */}
           <form onSubmit={handleSubmit} noValidate>
             <div className="card" style={{ padding: 32 }}>
@@ -181,7 +181,7 @@ export default function CheckoutPage() {
           </form>
 
           {/* Order summary */}
-          <div className="card" style={{ padding: 28, position: "sticky", top: 88 }}>
+          <div className="card checkout-summary" style={{ padding: 28, position: "sticky", top: 88 }}>
             <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text)", marginBottom: 20 }}>Order Summary</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 20 }}>
               {items.map((item) => (
@@ -256,7 +256,8 @@ export default function CheckoutPage() {
 
       <style>{`
         @media (max-width: 768px) {
-          .container > div:last-child { grid-template-columns: 1fr !important; }
+          .checkout-layout  { grid-template-columns: 1fr !important; }
+          .checkout-summary { position: static !important; }
         }
       `}</style>
     </div>

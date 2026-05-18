@@ -122,8 +122,13 @@ export default function Navbar() {
             background: "none",
             border: "none",
             cursor: "pointer",
-            padding: 8,
+            padding: 10,
+            margin: "-10px -4px",
             color: "var(--primary)",
+            minWidth: 44,
+            minHeight: 44,
+            alignItems: "center",
+            justifyContent: "center",
           }}
           className="mobile-menu-btn"
           aria-label="Toggle menu"
@@ -154,12 +159,13 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               style={{
                 display: "block",
-                padding: "12px 0",
-                fontSize: 15,
+                padding: "14px 0",
+                fontSize: 16,
                 fontWeight: 500,
                 color: "var(--text)",
                 textDecoration: "none",
                 borderBottom: "1px solid var(--border)",
+                minHeight: 48,
               }}
             >
               {label}

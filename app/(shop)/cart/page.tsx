@@ -26,13 +26,13 @@ export default function CartPage() {
           {itemCount} item{itemCount !== 1 ? "s" : ""}
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: 32, alignItems: "start" }}>
+        <div className="cart-layout" style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: 32, alignItems: "start" }}>
           {/* Items */}
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {items.map((item) => (
               <div
                 key={item.productId}
-                className="card animate-fade-up"
+                className="card animate-fade-up cart-item"
                 style={{ display: "grid", gridTemplateColumns: "80px 1fr auto", gap: 20, padding: 20, alignItems: "center" }}
               >
                 {/* Image */}
@@ -84,7 +84,7 @@ export default function CartPage() {
                 </div>
 
                 {/* Subtotal + remove */}
-                <div style={{ textAlign: "right" }}>
+                <div className="cart-item-right" style={{ textAlign: "right" }}>
                   <div style={{ fontSize: 16, fontWeight: 700, color: "var(--text)", marginBottom: 12 }}>
                     ৳{(item.price * item.quantity).toLocaleString()}
                   </div>
@@ -108,7 +108,7 @@ export default function CartPage() {
           </div>
 
           {/* Summary */}
-          <div className="card animate-fade-up delay-100" style={{ padding: 28, position: "sticky", top: 88 }}>
+          <div className="card animate-fade-up delay-100 cart-summary" style={{ padding: 28, position: "sticky", top: 88 }}>
             <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text)", marginBottom: 24 }}>Order Summary</h2>
 
             {items.map((item) => (
@@ -137,7 +137,12 @@ export default function CartPage() {
 
       <style>{`
         @media (max-width: 768px) {
-          .container > div:last-child { grid-template-columns: 1fr !important; }
+          .cart-layout { grid-template-columns: 1fr !important; }
+          .cart-summary { position: static !important; }
+        }
+        @media (max-width: 480px) {
+          .cart-item { grid-template-columns: 64px 1fr !important; gap: 12px !important; }
+          .cart-item-right { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; text-align: left !important; }
         }
       `}</style>
     </div>
